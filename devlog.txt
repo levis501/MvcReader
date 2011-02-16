@@ -6,3 +6,5 @@ rm public/index.html
 set root :to in config/routes.rb
 edit views/home/index.html.erb for initial homepage
 
+Created git repository and added all files so far
+
