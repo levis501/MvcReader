@@ -6,4 +6,6 @@ Requirements:
 - the reader keeps track of which items a user has read
 
 TODO:
-- Verify a users email address, require password/open id  
+- Verify a users email address, require password/open id
+- Allow a user to explicitly mark an item as read or unread
+- Use a cookie to store login credentials   

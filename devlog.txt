@@ -8,3 +8,28 @@ edit views/home/index.html.erb for initial homepage
 
 Created git repository and added all files so far
 
+rails generate scaffold User email:string # maybe put some more info in User record
+---------------------
+Planning tables:
+
+User:  string:email
+
+RSSFeed: string:url
+
+RSSPost: string:title
+         string:link
+         string:description
+         timestamp:date
+         reference:RSSFeed
+
+Subscription: reference:User
+			  reference:RSSFeed
+			  array of RSSPost reference?: read items
+			 
+(if no array type available, create a table of RSSReadPost)
+RSSReadPost: reference:User
+		     reference:RSSPost
+		
+-----------------------		
+rake db:migrate
+	
