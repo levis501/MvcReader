@@ -1,0 +1,8 @@
+rails new MvcReader
+cd MvcReader
+rake db:create
+rails generate controller home index
+rm public/index.html
+set root :to in config/routes.rb
+edit views/home/index.html.erb for initial homepage
+
