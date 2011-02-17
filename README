@@ -7,5 +7,7 @@ Requirements:
 
 TODO:
 - Verify a users email address, require password/open id
+- Separate sign-in and user registration 
 - Allow a user to explicitly mark an item as read or unread
-- Use a cookie to store login credentials   
+- Use a cookie to store login credentials
+- Allow a user to change email address

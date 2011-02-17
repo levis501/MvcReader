@@ -1,5 +1,17 @@
 MvcReader::Application.routes.draw do
+  resources :post_read_records
+
+  resources :record_of_read_posts
+
+  resources :subscriptions
+
+  resources :rss_posts
+
+  resources :rss_feeds
+  
+  match 'users/signin', :to => "users#signin"
   resources :users
+  
 
   get "home/index"
 

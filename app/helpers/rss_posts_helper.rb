@@ -1,0 +1,2 @@
+module RssPostsHelper
+end

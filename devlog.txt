@@ -15,21 +15,25 @@ Planning tables:
 User:  string:email
 
 RSSFeed: string:url
+		 string:title
+		 string:description
 
 RSSPost: string:title
          string:link
          string:description
-         timestamp:date
-         reference:RSSFeed
+         datetime:date
+         references:RSSFeed
 
-Subscription: reference:User
-			  reference:RSSFeed
-			  array of RSSPost reference?: read items
-			 
-(if no array type available, create a table of RSSReadPost)
-RSSReadPost: reference:User
-		     reference:RSSPost
+Subscription: references:User
+			  references:RSSFeed
+
+PostReadRecord: references:User
+  	              references:RSSPost
 		
 -----------------------		
 rake db:migrate
-	
+rails generate scaffold RSSFeed url:string title:string description:string
+rails generate scaffold RSSPost string:title string:link string:description datetime:date references:RSSFeed
+rails generate scaffold Subscription references:User references:RSSFeed
+rails generate scaffold RecordOfReadPost references:User references:RSSPost
+
