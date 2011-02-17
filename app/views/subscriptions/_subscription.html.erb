@@ -1,0 +1,16 @@
+<p>
+	<b>Feed:</b>
+	<i>TODO</i>
+</p>
+
+<p>
+	<b>URL</b>
+	<%= subscription.feed_url %>
+</p>
+
+
+<p>
+	<%= link_to 'Remove Feed', [subscription.user, subscription],
+				:confirm => 'Are you sure?',
+				:method => :delete %>
+</p>

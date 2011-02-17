@@ -10,6 +10,44 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20110217075808) do
+
+  create_table "post_read_records", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "rss_post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rss_feeds", :force => true do |t|
+    t.string   "url"
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rss_posts", :force => true do |t|
+    t.string   "title"
+    t.string   "link"
+    t.string   "description"
+    t.datetime "date"
+    t.integer  "rss_feed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "rss_feed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

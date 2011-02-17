@@ -40,15 +40,23 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
-    @user = User.new(params[:user])
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+    existing_user_id = User.where(:email => params[:user][:email])[0]
+    if (existing_user_id.nil?) then
+      @user = User.new(params[:user])
+      respond_to do |format|
+        if @user.save
+          format.html { redirect_to(@user, :notice => 'User was successfully created.') }
+          format.xml  { render :xml => @user, :status => :created, :location => @user }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        end
+      end
+    else
+      @user = User.find(existing_user_id)
+      respond_to do |format|
+        format.html { redirect_to(@user, :notice => 'Found existing user.') }
+        format.xml  { head :ok }
       end
     end
   end

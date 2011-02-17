@@ -1,4 +1,6 @@
-<%= form_for(@subscription) do |f| %>
+<%= form_for [@user, @user.subscriptions.build] do |f| %>
+
+<% if false %>
   <% if @subscription.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
@@ -10,14 +12,11 @@
       </ul>
     </div>
   <% end %>
+<% end %>
 
   <div class="field">
-    <%= f.label :references %><br />
-    <%= f.text_field :references %>
-  </div>
-  <div class="field">
-    <%= f.label :references %><br />
-    <%= f.text_field :references %>
+    <%= f.label :feed_url %><br />
+    <%= f.text_field :feed_url %>
   </div>
   <div class="actions">
     <%= f.submit %>

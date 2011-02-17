@@ -1,11 +1,11 @@
 class CreateRssPosts < ActiveRecord::Migration
   def self.up
     create_table :rss_posts do |t|
-      t.title :string
-      t.link :string
-      t.description :string
-      t.date :datetime
-      t.rss_feed :references
+      t.string :title
+      t.string :link
+      t.string :description
+      t.datetime :date
+      t.references :rss_feed
 
       t.timestamps
     end

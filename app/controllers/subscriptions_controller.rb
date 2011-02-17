@@ -1,4 +1,17 @@
 class SubscriptionsController < ApplicationController
+  def create
+    @user = User.find(params[:user_id])
+    @subscription = @user.subscriptions.create(params[:subscription])
+    redirect_to user_path(@user)
+  end
+  
+  def destroy
+    @user = User.find(params[:user_id])
+    @subscription = @user.subscriptions.find(params[:id])
+    @subscription.destroy
+    redirect_to user_path(@user)
+  end
+  
   # GET /subscriptions
   # GET /subscriptions.xml
   def index
@@ -21,9 +34,21 @@ class SubscriptionsController < ApplicationController
     end
   end
 
+  # GET /users/1/subscriptions/new
+  # GET /users/1/subscriptions/new.xml
+  def new
+    @user = User.find(params[:user_id])
+    @subscription = @user.subscriptions.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @subscription }
+    end
+  end
+
   # GET /subscriptions/new
   # GET /subscriptions/new.xml
-  def new
+  def new0
     @subscription = Subscription.new
 
     respond_to do |format|
@@ -35,22 +60,6 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions/1/edit
   def edit
     @subscription = Subscription.find(params[:id])
-  end
-
-  # POST /subscriptions
-  # POST /subscriptions.xml
-  def create
-    @subscription = Subscription.new(params[:subscription])
-
-    respond_to do |format|
-      if @subscription.save
-        format.html { redirect_to(@subscription, :notice => 'Subscription was successfully created.') }
-        format.xml  { render :xml => @subscription, :status => :created, :location => @subscription }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @subscription.errors, :status => :unprocessable_entity }
-      end
-    end
   end
 
   # PUT /subscriptions/1
@@ -69,15 +78,4 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-  # DELETE /subscriptions/1
-  # DELETE /subscriptions/1.xml
-  def destroy
-    @subscription = Subscription.find(params[:id])
-    @subscription.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(subscriptions_url) }
-      format.xml  { head :ok }
-    end
-  end
 end

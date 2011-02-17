@@ -1,8 +1,8 @@
 class CreateSubscriptions < ActiveRecord::Migration
   def self.up
     create_table :subscriptions do |t|
-      t.User :references
-      t.RSSFeed :references
+      t.references :user
+      t.references :rss_feed
 
       t.timestamps
     end

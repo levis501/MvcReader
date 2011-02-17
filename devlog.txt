@@ -35,5 +35,5 @@ rake db:migrate
 rails generate scaffold RSSFeed url:string title:string description:string
 rails generate scaffold RSSPost string:title string:link string:description datetime:date references:RSSFeed
 rails generate scaffold Subscription references:User references:RSSFeed
-rails generate scaffold RecordOfReadPost references:User references:RSSPost
+rails generate scaffold ReadPostRecord references:User references:RSSPost
 

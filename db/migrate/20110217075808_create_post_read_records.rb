@@ -1,8 +1,8 @@
 class CreatePostReadRecords < ActiveRecord::Migration
   def self.up
     create_table :post_read_records do |t|
-      t.User :references
-      t.RSSPost :references
+      t.references :user
+      t.references :rss_post
 
       t.timestamps
     end

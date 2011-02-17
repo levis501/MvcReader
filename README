@@ -11,3 +11,4 @@ TODO:
 - Allow a user to explicitly mark an item as read or unread
 - Use a cookie to store login credentials
 - Allow a user to change email address
+- Require authentication for admin functionality

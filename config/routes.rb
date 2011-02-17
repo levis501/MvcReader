@@ -1,16 +1,13 @@
 MvcReader::Application.routes.draw do
   resources :post_read_records
-
-  resources :record_of_read_posts
-
-  resources :subscriptions
-
   resources :rss_posts
-
   resources :rss_feeds
   
-  match 'users/signin', :to => "users#signin"
-  resources :users
+  #need to send to different method for GET vs POST
+  match 'users/signin', :to => "users#signin"  
+  resources :users do
+    resources :subscriptions
+  end
   
 
   get "home/index"
