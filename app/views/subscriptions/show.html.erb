@@ -1,3 +1,5 @@
+<%= render :partial => "layouts/toolbar" %>
+
 <p id="notice"><%= notice %></p>
 
 <%= render :partial => "rss_feeds/rss_feed_header", :locals => { :rss_feed_id => @subscription.rss_feed_id, :user_id => @subscription.user_id } %>

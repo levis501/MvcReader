@@ -26,7 +26,8 @@ class PostReadRecordsController < ApplicationController
   def new
     @post_read_record = PostReadRecord.new(:rss_post_id => params[:post_id], :user_id => params[:user_id])
     @post_read_record.save
-    redirect_to RssPost.find(@post_read_record.rss_post_id).link
+    redirect_to rss_post_path(@post_read_record.rss_post_id)
+#    redirect_to RssPost.find(@post_read_record.rss_post_id).link
 #    respond_to do |format|
 #      format.html # new.html.erb
 #      format.xml  { render :xml => @post_read_record }

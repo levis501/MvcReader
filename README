@@ -14,3 +14,4 @@ TODO:
 - Require authentication for admin functionality (currently hackable by guessing URLs)
 - Check publication date of feed before reading all items
 - If one user edits a feed url, create a new RssFeed record if any other users are subscribed to that feed
+- Sort feed by date
