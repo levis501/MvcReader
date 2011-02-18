@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     else
       @user = User.find(existing_user_id)
       respond_to do |format|
-        format.html { redirect_to(@user, :notice => 'Found existing user.') }
+        format.html { redirect_to(@user, :notice => 'Sign in successful.') }
         format.xml  { head :ok }
       end
     end

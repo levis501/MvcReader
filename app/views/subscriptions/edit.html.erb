@@ -1,6 +1,7 @@
+<%= link_to "Sign in as a different user", users_signin_path %>
+<%= link_to "Go Back", user_path(@subscription.user_id) %>
+<hr>
+
 <h1>Editing subscription</h1>
 <% @user = User.find(@subscription.user_id)%>
 <%= render 'form' %>
-
-<%= link_to 'Show', @subscription %> |
-<%= link_to 'Back', subscriptions_path %>

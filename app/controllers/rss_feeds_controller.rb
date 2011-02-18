@@ -1,37 +1,4 @@
 class RssFeedsController < ApplicationController
-  # GET /rss_feeds
-  # GET /rss_feeds.xml
-  def index
-    @rss_feeds = RssFeed.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @rss_feeds }
-    end
-  end
-
-  # GET /rss_feeds/1
-  # GET /rss_feeds/1.xml
-  def show
-    @rss_feed = RssFeed.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @rss_feed }
-    end
-  end
-
-  # GET /rss_feeds/new
-  # GET /rss_feeds/new.xml
-  def new
-    @rss_feed = RssFeed.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @rss_feed }
-    end
-  end
-
   # GET /rss_feeds/1/edit
   def edit
     @rss_feed = RssFeed.find(params[:id])
