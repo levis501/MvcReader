@@ -24,12 +24,13 @@ class PostReadRecordsController < ApplicationController
   # GET /post_read_records/new
   # GET /post_read_records/new.xml
   def new
-    @post_read_record = PostReadRecord.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @post_read_record }
-    end
+    @post_read_record = PostReadRecord.new(:rss_post_id => params[:post_id], :user_id => params[:user_id])
+    @post_read_record.save
+    redirect_to RssPost.find(@post_read_record.rss_post_id).link
+#    respond_to do |format|
+#      format.html # new.html.erb
+#      format.xml  { render :xml => @post_read_record }
+#    end
   end
 
   # GET /post_read_records/1/edit

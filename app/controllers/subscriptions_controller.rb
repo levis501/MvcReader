@@ -1,33 +1,38 @@
 class SubscriptionsController < ApplicationController
   def create
-    @user = User.find(params[:user_id])
+#    logger.debug "Creating subscription for user #{@user.id}"
+    @user = User.find(params[:subscription][:user_id])
     @subscription = @user.subscriptions.create(params[:subscription])
     @subscription.feed_url=params[:subscription][:feed_url]    
     redirect_to user_path(@user)
   end
   
   def destroy
-    @user = User.find(params[:user_id])
-    @subscription = @user.subscriptions.find(params[:id])
+    @subscription = Subscription.find(params[:id])
+    @user = User.find(@subscription.user_id)
+    rss_feed_id = @subscription.rss_feed_id
     @subscription.destroy
+    @subscription.save
+    RssFeed.find(rss_feed_id).cleanup_unused
     redirect_to user_path(@user)
   end
   
   # GET /subscriptions/1
   # GET /subscriptions/1.xml
-  def show
+  def show1
     @subscription = Subscription.find(params[:id])
     @user = User.find(@subscription.user_id)
     redirect_to user_path(@user)
   end
   
-#  def show0
-#    @subscription = Subscription.find(params[:id])
-#    respond_to do |format|
-#      format.html # show.html.erb
-#      format.xml  { render :xml => @subscription }
-#    end
-#  end
+  def show
+    @subscription = Subscription.find(params[:id])
+    @user = User.find(@subscription.user_id)
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @subscription }
+    end
+  end
 
 # PUT /subscriptions/1
 # PUT /subscriptions/1.xml

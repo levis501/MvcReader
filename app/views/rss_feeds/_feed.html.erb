@@ -1,0 +1,11 @@
+<% RssPost.where(:rss_feed_id => rss_feed_id).each do |post| %>
+	<% unread = PostReadRecord.where(:rss_post_id => post.id, :user_id => user_id).length == 0 %>
+	<% if unread then %>
+	<b>
+	<% end %>
+	<%= render :partial => "rss_posts/link", :locals => { :post => post, :user_id => user_id } %>
+	<% if unread then %>
+	</b>
+	<% end %>
+ 	<br />
+<% end %>

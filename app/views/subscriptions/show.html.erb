@@ -1,14 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>References:</b>
-  <%= @subscription.references %>
-</p>
-
-<p>
-  <b>References:</b>
-  <%= @subscription.references %>
-</p>
+<%= render :partial => "rss_feeds/rss_feed_header", :locals => { :rss_feed_id => @subscription.rss_feed_id, :user_id => @subscription.user_id } %>
+<hr>
+<%= render :partial => "rss_feeds/feed", :locals => { :rss_feed_id => @subscription.rss_feed_id, :user_id => @subscription.user_id } %>
 
 
 <%= link_to 'Edit', edit_subscription_path(@subscription) %> |
