@@ -5,9 +5,12 @@ MvcReader::Application.routes.draw do
   
   #need to send to different method for GET vs POST
   match 'users/signin', :to => "users#signin"  
-  resources :users do
-    resources :subscriptions
-  end
+  resources :users
+  resources :subscriptions
+
+#  resources :users do
+#    resources :subscriptions
+#  end
   
 
   get "home/index"

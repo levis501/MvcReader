@@ -12,3 +12,5 @@ TODO:
 - Use a cookie to store login credentials
 - Allow a user to change email address
 - Require authentication for admin functionality
+- Check publication date of feed before reading all items
+- If one user edits a feed url, create a new RssFeed record if any other users are subscribed to that feed

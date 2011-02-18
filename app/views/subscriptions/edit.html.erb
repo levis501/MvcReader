@@ -1,5 +1,5 @@
 <h1>Editing subscription</h1>
-
+<% @user = User.find(@subscription.user_id)%>
 <%= render 'form' %>
 
 <%= link_to 'Show', @subscription %> |

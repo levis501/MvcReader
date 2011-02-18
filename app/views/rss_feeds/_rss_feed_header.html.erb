@@ -1,0 +1,5 @@
+<% feed = RssFeed.find(rss_feed_id) %>
+<% feed.get_latest_feed() %>
+<b> <%= feed.title %> </b> <br />
+<%= feed.description %> <br />
+<i><%= feed.url %></i>

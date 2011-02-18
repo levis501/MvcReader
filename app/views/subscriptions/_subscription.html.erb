@@ -1,16 +1,18 @@
-<p>
-	<b>Feed:</b>
-	<i>TODO</i>
-</p>
-
-<p>
-	<b>URL</b>
-	<%= subscription.feed_url %>
-</p>
-
-
-<p>
-	<%= link_to 'Remove Feed', [subscription.user, subscription],
-				:confirm => 'Are you sure?',
-				:method => :delete %>
-</p>
+<table border=0>
+	<tr>
+		<td>
+			<%= render :partial => "rss_feeds/rss_feed_header", :locals => { :rss_feed_id => subscription.rss_feed_id, :user_id => subscription.user_id } %>
+		</td>
+		<td>
+			<%= link_to image_tag("read.png", :border => 0) %>
+			<%= link_to image_tag("edit.png", :border => 0),
+					edit_subscription_path(subscription.id) %>
+										
+			<%= link_to image_tag("trash.png", :border => 0),
+					subscription,
+					:confirm => 'Are you sure?',
+					:method => :delete %>
+		</td>
+	</tr>
+</table>
+<hr />
